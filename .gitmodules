@@ -1,0 +1,6 @@
+[submodule "datapack"]
+	path = datapack
+	url = https://github.com/xu-mu-xian/Pipes-for-Minecraft-Datapack
+[submodule "resourcepack"]
+	path = resourcepack
+	url = https://github.com/xu-mu-xian/Pipes-for-Minecraft-Resourcepack
