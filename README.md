@@ -188,20 +188,20 @@ function pipes:custom/text_above/reset
 
 | 管道类型（开放状态） | 码位对应的字符 | 管道类型（锁定状态） | 码位对应的字符 |
 | --- | --- | --- | --- |
-| ![](resourcepack/assets/pipes/textures/font/none/source/1.png) | a | ![](resourcepack/assets/pipes/textures/font/none/source/1_lock.png) | A |
-| ![](resourcepack/assets/pipes/textures/font/none/source/2.png) | b | ![](resourcepack/assets/pipes/textures/font/none/source/2_lock.png) | B |
-| ![](resourcepack/assets/pipes/textures/font/none/source/3.png) | c | ![](resourcepack/assets/pipes/textures/font/none/source/3_lock.png) | C |
-| ![](resourcepack/assets/pipes/textures/font/none/source/4.png) | d | ![](resourcepack/assets/pipes/textures/font/none/source/4_lock.png) | D |
-| ![](resourcepack/assets/pipes/textures/font/none/straight/1.png) | e | ![](resourcepack/assets/pipes/textures/font/none/straight/1_lock.png) | E |
-| ![](resourcepack/assets/pipes/textures/font/none/straight/2.png) | f | ![](resourcepack/assets/pipes/textures/font/none/straight/2_lock.png) | F |
-| ![](resourcepack/assets/pipes/textures/font/none/turn/12.png) | g | ![](resourcepack/assets/pipes/textures/font/none/turn/12_lock.png) | G |
-| ![](resourcepack/assets/pipes/textures/font/none/turn/23.png) | h | ![](resourcepack/assets/pipes/textures/font/none/turn/23_lock.png) | H |
-| ![](resourcepack/assets/pipes/textures/font/none/turn/34.png) | i | ![](resourcepack/assets/pipes/textures/font/none/turn/34_lock.png) | I |
-| ![](resourcepack/assets/pipes/textures/font/none/turn/41.png) | j | ![](resourcepack/assets/pipes/textures/font/none/turn/41_lock.png) | J |
-| ![](resourcepack/assets/pipes/textures/font/none/trible/1.png) | k | ![](resourcepack/assets/pipes/textures/font/none/trible/1_lock.png) | K |
-| ![](resourcepack/assets/pipes/textures/font/none/trible/2.png) | l | ![](resourcepack/assets/pipes/textures/font/none/trible/2_lock.png) | L |
-| ![](resourcepack/assets/pipes/textures/font/none/trible/3.png) | m | ![](resourcepack/assets/pipes/textures/font/none/trible/3_lock.png) | M |
-| ![](resourcepack/assets/pipes/textures/font/none/trible/4.png) | n | ![](resourcepack/assets/pipes/textures/font/none/trible/4_lock.png) | N |
+| ![](readme/source/1.png) | a | ![](readme/source/1_lock.png) | A |
+| ![](readme/source/2.png) | b | ![](readme/source/2_lock.png) | B |
+| ![](readme/source/3.png) | c | ![](readme/source/3_lock.png) | C |
+| ![](readme/source/4.png) | d | ![](readme/source/4_lock.png) | D |
+| ![](readme/straight/1.png) | e | ![](readme/straight/1_lock.png) | E |
+| ![](readme/straight/2.png) | f | ![](readme/straight/2_lock.png) | F |
+| ![](readme/turn/12.png) | g | ![](readme/turn/12_lock.png) | G |
+| ![](readme/turn/23.png) | h | ![](readme/turn/23_lock.png) | H |
+| ![](readme/turn/34.png) | i | ![](readme/turn/34_lock.png) | I |
+| ![](readme/turn/41.png) | j | ![](readme/turn/41_lock.png) | J |
+| ![](readme/trible/1.png) | k | ![](readme/trible/1_lock.png) | K |
+| ![](readme/trible/2.png) | l | ![](readme/trible/2_lock.png) | L |
+| ![](readme/trible/3.png) | m | ![](readme/trible/3_lock.png) | M |
+| ![](readme/trible/4.png) | n | ![](readme/trible/4_lock.png) | N |
 
 **一个管道类型有 4 个变种：普通（`normal`）、灌水（`flood`）、警告（`warning`）和水源（`source`）。命令存储 `pipes:grid` 中有这么一个字段 `style`，里面存储了各变种使用的字体的命名空间 ID。** 默认值如下：
 
