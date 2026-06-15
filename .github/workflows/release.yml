@@ -1,0 +1,57 @@
+name: Pack Datapack and Resourcepack
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main Repo
+        uses: actions/checkout@v4
+
+      - name: Clone Datapack (Specific Commit)
+        run: |
+          mkdir datapack-src
+          cd datapack-src
+          git init
+          git remote add origin https://github.com/xu-mu-xian/Pipes-for-Minecraft-Datapack.git
+          git fetch --depth 1 origin 140eb06125f7d3cb042d708b3c942d79b417836b
+          git checkout FETCH_HEAD
+
+      - name: Clone Resourcepack (Specific Commit)
+        run: |
+          mkdir resourcepack-src
+          cd resourcepack-src
+          git init
+          git remote add origin https://github.com/xu-mu-xian/Pipes-for-Minecraft-Resourcepack.git
+          git fetch --depth 1 origin 35d0fdf5c87d0ade5872040bed4ecd0293a0365c
+          git checkout FETCH_HEAD
+
+      - name: Zip Packs and Combine
+        run: |
+          mkdir dist
+          
+          # 打包数据包
+          cd datapack-src
+          zip -r ../dist/Pipes-Mini-game-Datapack.zip ./* -x "*.git*"
+          cd ..
+          
+          # 打包资源包
+          cd resourcepack-src
+          zip -r ../dist/Pipes-Mini-game-Resourcepack.zip ./* -x "*.git*"
+          cd ..
+          
+          # 将两个包合并压缩为一个总包
+          cd dist
+          zip -r ../Pipes-Mini-game-for-Minecraft.zip ./*
+          cd ..
+
+      - name: Create Release and Upload Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Pipes-Mini-game-for-Minecraft.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
