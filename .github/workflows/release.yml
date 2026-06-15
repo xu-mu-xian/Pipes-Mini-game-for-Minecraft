@@ -12,22 +12,22 @@ jobs:
       - name: Checkout Main Repo
         uses: actions/checkout@v4
 
-      - name: Clone Datapack (Specific Commit)
+      - name: Clone Datapack (Latest)
         run: |
           mkdir datapack-src
           cd datapack-src
           git init
           git remote add origin https://github.com/xu-mu-xian/Pipes-for-Minecraft-Datapack.git
-          git fetch --depth 1 origin 140eb06125f7d3cb042d708b3c942d79b417836b
+          git fetch --depth 1 origin main
           git checkout FETCH_HEAD
 
-      - name: Clone Resourcepack (Specific Commit)
+      - name: Clone Resourcepack (Latest)
         run: |
           mkdir resourcepack-src
           cd resourcepack-src
           git init
           git remote add origin https://github.com/xu-mu-xian/Pipes-for-Minecraft-Resourcepack.git
-          git fetch --depth 1 origin 35d0fdf5c87d0ade5872040bed4ecd0293a0365c
+          git fetch --depth 1 origin main
           git checkout FETCH_HEAD
 
       - name: Zip Packs and Combine
@@ -41,7 +41,7 @@ jobs:
           
           # 打包资源包
           cd resourcepack-src
-          zip -r ../dist/Pipes-Mini-game-Resourcepack.zip ./* -x "*.git*"
+          zip -r ../dist/Pipes-Resourcepack.zip ./* -x "*.git*"
           cd ..
           
           # 将两个包合并压缩为一个总包
@@ -53,5 +53,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: Pipes-Mini-game-for-Minecraft.zip
+          prerelease: true 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
