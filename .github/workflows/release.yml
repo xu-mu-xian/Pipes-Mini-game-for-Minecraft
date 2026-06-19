@@ -41,10 +41,17 @@ jobs:
           
           # 打包资源包
           cd resourcepack-src
-          zip -r ../dist/Pipes-Resourcepack.zip ./* -x "*.git*"
+          zip -r ../dist/Pipes-Mini-game-Resourcepack.zip ./* -x "*.git*"
           cd ..
           
-          # 将两个包合并压缩为一个总包
+          # LICENSE
+          if [ -f "LICENSE" ]; then
+            cp LICENSE dist/
+          elif [ -f "LICENSE.txt" ]; then
+            cp LICENSE.txt dist/
+          fi
+          
+          # 将数据包、资源包和 LICENSE 合并压缩为一个总包
           cd dist
           zip -r ../Pipes-Mini-game-for-Minecraft.zip ./*
           cd ..
