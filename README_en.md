@@ -2,7 +2,7 @@
 
 # Pipes-Mini-game-for-Minecraft
 
-Supported Version: 26.1.2
+Supported Version: 26.1 ~ 26.2
 
 Official namespace: `pipes`
 
