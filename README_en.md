@@ -1,6 +1,6 @@
 [中文版本](README.md)
 
-# Pipes-Mini-game-for-Minecraft
+# Pipes-Mini-game-for-Minecraft v 1.1
 
 Supported Version: 26.1 ~ 26.2
 
