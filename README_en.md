@@ -1,15 +1,17 @@
 [中文版本](README.md)
 
-# Pipes-Mini-game-for-Minecraft v 1.1
+# Pipes-Mini-game-for-Minecraft
 
 Supported Version:
 
 - v-1.0 & v-1.1 is for 26.1 ~ 26.2
-- v-1.2 is for 26.3
+- v-1.2 & v-1.3 is for 26.3
 
 Official namespace: `pipes`
 
 ![](readme/logo.png)
+
+**The following content is all based on v-1.3!**
 
 ## 1. For Players
 
@@ -231,12 +233,12 @@ To restore the default appearance, execute:
 function pipes:custom/style/reset
 ```
 
-#### 2.3.4 Completion Message and Time Record
+#### 2.3.4 Completion Message and Game Record
 
-When a player solves the current Pipes puzzle, a line of text appears below the grid saying: "Completed!". If the `record` setting is set to `true`, the time spent on this round will follow right after. You can also customize this string of text. When `record` is set to `true`, this text is stored in the command storage `pipes:grid` under the path `record.is_true`. Its default value is:
+When a player solves the current Pipes puzzle, a line of text appears below the grid saying: "Completed!". If the `record` setting is set to `true`, the time spent on this round and number of operations will follow right after. You can also customize this string of text. When `record` is set to `true`, this text is stored in the command storage `pipes:grid` under the path `record.is_true`. Its default value is:
 
 ```
-{translate:"dialog.pipes.game.time",with:[{color:"gold",text:""},{color:"gold",text:""},{color:"gold",text:""}]}
+{translate:"dialog.pipes.game.record",with:[{color:"gold",text:""},{color:"gold",text:""},{color:"gold",text:""},{color:"gold",text:""}]}
 ```
 
 When `record` is set to `false`, this text is stored in the command storage `pipes:grid` under the path `record.is_false`. Its default value is:
@@ -251,11 +253,12 @@ If you wish to change the text displayed when `record` is `true` (for instance, 
 data modify storage pipes:grid record.is_true set value "Done!"
 ```
 
-You can pass the time elapsed during the round into this text by utilizing translatable text along with the `with` tag, where:
+You can pass the time elapsed during the round and number of operations into this text by utilizing translatable text along with the `with` tag, where:
 
 - Element index 0 of `with` automatically receives the minutes.
 - Element index 1 of `with` automatically receives the integer part of the seconds.
 - Element index 2 of `with` automatically receives the decimal part of the seconds.
+- Element index 3 of `with` automatically receives the number of operations.
 
 For example, if you want the text to say "Done within xxx minutes and xxx seconds", passing the minutes and the integer part of the seconds, you should write it like this:
 
@@ -270,6 +273,12 @@ If you want to ignore the `record` setting entirely and display the same text re
 ```mcfunction
 data modify storage pipes:grid record.is_true set value "Done!"
 data modify storage pipes:grid record.is_false set value "Done!"
+```
+
+**Note that when `record` is `true`, the game will automatically track your play time and number of operations, and when you break a record, it will show "New Record!" at the "Completed!" spot.** This piece of text can also be customized. It exists at the path `record.new_record` in storage `pipes:grid` and has the following default values:
+
+```
+{bold:true,color:"red",translate:"dialog.pipes.game.new_record"}
 ```
 
 To restore the default contents, run:

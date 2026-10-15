@@ -1,15 +1,17 @@
 [Read in English](README_en.md)
 
-# 接水管小游戏数据包 v 1.1
+# 接水管小游戏数据包
 
 本数据包支持版本：
 
 - v-1.0 和 v-1.1 接受 26.1 ~ 26.2
-- v-1.2 接受 26.3
+- v-1.2 和 v-1.3 接受 26.3
 
 官方命名空间: `pipes`
 
 ![](readme/logo.png)
+
+**以下内容均基于 1.3 版本！**
 
 ## 1. 如果你是玩家
 
@@ -231,12 +233,12 @@ data modify storage pipes:grid style.normal set value "custom:your_style"
 function pipes:custom/style/reset
 ```
 
-#### 2.3.4 已完成提示和时间记录
+#### 2.3.4 已完成提示和游戏记录
 
-当玩家解开当前接水管题的时候，网格下方会出现一行字：“已完成！”，如果设置 `record` 为 `true`，那后面还会有此局游戏用时。同样的，你也可以自定义这行文本。当设置 `record` 为 `true` 时，这行文本被存储在命令存储 `pipes:grid` 的路径 `record.is_true`。它的默认值为
+当玩家解开当前接水管题的时候，网格下方会出现一行字：“已完成！”，如果设置 `record` 为 `true`，那后面还会有此局游戏用时和操作步数。同样的，你也可以自定义这行文本。当设置 `record` 为 `true` 时，这行文本被存储在命令存储 `pipes:grid` 的路径 `record.is_true`。它的默认值为
 
 ```
-{translate:"dialog.pipes.game.time",with:[{color:"gold",text:""},{color:"gold",text:""},{color:"gold",text:""}]}
+{translate:"dialog.pipes.game.record",with:[{color:"gold",text:""},{color:"gold",text:""},{color:"gold",text:""},{color:"gold",text:""}]}
 ```
 
 当设置 `record` 为 `false` 时，这行文本被存储在命令存储 `pipes:grid` 的路径 `record.is_false`。它的默认值为
@@ -251,11 +253,12 @@ function pipes:custom/style/reset
 data modify storage pipes:grid record.is_true set value "Done!"
 ```
 
-你可以为这段文本传入本局游戏所耗费的时间，方法是使用本地化文本以及 `with`，其中：
+你可以为这段文本传入本局游戏所耗费的时间和操作步数，方法是使用本地化文本以及 `with`，其中：
 
 - `with` 的第 0 个元素会自动传入分钟
 - `with` 的第 1 个元素会自动传入秒的整数部分
 - `with` 的第 2 个元素会自动传入秒的小数部分
+- `with` 的第 3 个元素会自动传入操作步数
 
 例如，你希望的文本是“Done within xxx minutes and xxx seconds”，其中需要传入的参数是分钟和秒的整数部分，那你应该这么写：
 
@@ -270,6 +273,12 @@ data modify storage pipes:grid record.is_true set value {translate:"Done within 
 ```mcfunction
 data modify storage pipes:grid record.is_true set value "Done!"
 data modify storage pipes:grid record.is_false set value "Done!"
+```
+
+**注意，当 `record` 为 `true` 时，游戏会自动统计游戏时间和操作步数，并在破纪录的时候于“已完成！”处显示“新纪录！”。** 这段文本同样是可以自定义的，它存在于存储 `pipes:grid` 的路径 `record.new_record`，并拥有如下默认值：
+
+```
+{bold:true,color:"red",translate:"dialog.pipes.game.new_record"}
 ```
 
 恢复默认的内容可以执行以下命令：
